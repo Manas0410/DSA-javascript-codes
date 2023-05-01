@@ -13,6 +13,11 @@ var areDeeplyEqual = function (o1, o2) {
             if(typeof o1[i]!== typeof o2[i]){
                 return false
             }
+            if (typeof o1[i] === "object" && typeof o2[i] === "object"){
+              if (!areDeeplyEqual(o1[key], o2[key])) {
+                return false;
+              }
+            }
             if (o1[i]===o2[i]){
                 return false
             }
