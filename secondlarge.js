@@ -26,6 +26,8 @@
 // }
 // console.log(secLargest)
 
+
+//second method
 const largestNumber = (arr) => {
     let tempobj={}
     for (let i = 0; i < arr.length; i++) {
@@ -38,9 +40,19 @@ const largestNumber = (arr) => {
 }
 console.log(largestNumber([41, 2, 3, 4, 5, 6, 7, 12, 40, 33, 10]))
 
-// const obj ={
-//     5:1,
-//     3:5,
-//     10:3
-// };
-// console.log(Object.keys(obj))
+//third method
+const secondlargestNumber = (arr) => {
+    
+    let largest = arr[0]
+    let secLargest = 0
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i]>largest) {
+            secLargest = largest
+            largest = arr[i]}
+        else if (arr[i] > secLargest && arr[i] < largest) {
+            secLargest = arr[i];
+        }}
+    return secLargest
+}
+console.log(secondlargestNumber([41, 45, 3, 4, 5, 6, 7, 12, 40, 33, 10,]))
+
