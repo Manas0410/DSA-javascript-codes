@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <head>
+      <div id="first">first1</div>
+      <div></div>
+      <div id="first">first2</div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </head>
+    <div>
+      <div>
+        <div>
+          <div id="second">second</div>
+          <div id="third">third</div>
+          <div></div>
+          <div id="fourth">fourth</div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+<script>
+  const manasGEBI = (element) => {
+    // Handling edge cases
+    if (!element || typeof element !== "string") {
+      throw new TypeError(
+        "Failed to execute 'getElementById' on 'Document': 1 argument required, but only 0 present."
+      );
+    }
+
+    // Searching node element recursivly
+    const searchNodeElement = (node) => {
+      if (node.id === element) {
+        return node;
+      }
+      for (let item of node.childNodes) {
+        const result = searchNodeElement(item);
+        if (result) {
+          return result;
+        }
+      }
+    };
+
+    return searchNodeElement(document.body) || null;
+  };
+  console.log(manasGEBI("first")); //<div id="demo">demo</div>
+  console.log(manasGEBI("fourth")); //<div id="description">description1</div>
+  //console.log(getElementId("demo1")); // null
+  //   console.log(manasGEBI(123)); // Throw error, since id must be a string
+  //   console.log(manasGEBI()); // Throw error, since id parameter is missing
+  console.log(document.getElementById("first"));
+</script>
